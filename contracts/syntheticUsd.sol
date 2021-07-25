@@ -181,16 +181,6 @@ contract syntheticUsd is Context,IERC20Metadata{
         return true;
     }
     /**
-     * @dev calculate the token quote in usd token
-     *
-     * Requirements:
-     *
-     * - `tokenAmount` token amount to be paired with usd token
-     */
-    function getQuote(uint tokenAmount) public view returns (uint) {
-        return  tokenAmount.mul(usdAmount).div(10**18);
-    }
-    /**
      * @dev Deposit `amount` for each A and B from `sender`, and receive A-B tokens.
      * for each 1 A-B is backed by 1 A and 1 B.
      * Emits a {Deposit} event.
@@ -241,7 +231,16 @@ contract syntheticUsd is Context,IERC20Metadata{
         emit Withdraw(_msgSender(), amount);
         return true;
     }
-
+    /**
+     * @dev calculate the token quote in usd token
+     *
+     * Requirements:
+     *
+     * - `tokenAmount` token amount to be paired with usd token
+     */
+    function getQuote(uint tokenAmount) public view returns (uint) {
+        return  tokenAmount.mul(usdAmount).div(10**18);
+    }
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
      *
