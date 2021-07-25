@@ -13,7 +13,7 @@ There are other possible usage with some adjustment:
 
 and the sky is the limit ;)
 
-<strong>Instructions:<strong/>
+<h4>Instructions:<h4/>
 
 - step1: git clone https://github.com/appswarehouse/SyntheticAssets
 - step2: npm i
