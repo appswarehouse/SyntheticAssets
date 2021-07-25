@@ -1,3 +1,5 @@
+<h1>BIG TEXT</h1>
+
 in the crypto space, there is that dynamic force between bitcoin and ethereum, which depending on the bitcoin dominance the holder should be in bitcoin or alt (ETH),
 so from there where the idea of this synthetix assets smart contract came from. The users would be able to interact with a new token backed 50/50 by WBTC and WETH 
 respectively, where 1 WBTC_WETH = 1 WBTC + 1 WETH, in that case they won't care much where they should be. Also, for the price tag would be the sum of both tokens.
