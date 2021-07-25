@@ -197,17 +197,18 @@ contract syntheticPercentage is Context,IERC20Metadata{
      */
     
     function deposit(uint amount) public returns(bool){
+        (uint amountA, uint amountB) = calculateQuote(amount);
         require(
             pairA.transferFrom(
                 _msgSender(), 
                 address(this), 
-                amount.mul(PERCENTAGE_A).div(uint(10**18))),
+                amountA),
             "pair A transferFrom error");
         require(
             pairB.transferFrom(
                 _msgSender(), 
                 address(this),
-                amount.mul(PERCENTAGE_B).div(uint(10**18))),
+                amountB),
             "pair B transferFrom error");
         _mint(_msgSender(), amount);
         emit Deposit(_msgSender(), amount);
@@ -225,6 +226,7 @@ contract syntheticPercentage is Context,IERC20Metadata{
      */
     
     function withdraw(uint amount) public returns(bool){
+        (uint amountA, uint amountB) = calculateQuote(amount);
         require(
             balanceOf(_msgSender()) >= amount,
             "ERC20: exceeded available balance");
@@ -232,17 +234,29 @@ contract syntheticPercentage is Context,IERC20Metadata{
         require(
             pairA.transfer(
                 _msgSender(),
-                amount.mul(PERCENTAGE_A).div(uint(10**18))),
+                amountA),
             "pair A transfer failed");
         require(
             pairB.transfer(
                 _msgSender(),
-                amount.mul(PERCENTAGE_B).div(uint(10**18))),
+                amountB),
             "pair B transfer failed");
         emit Withdraw(_msgSender(), amount);
         return true;
     }
-
+    /**
+     * @dev get a quote for an `amount` for each A and B.
+     *
+     * Requirements:
+     *
+     * - `amount` is the amount to be quoted
+     * - `amountA` is the amount needed for pair A to deposit the `amount`
+     * - `amountB` is the amount needed for pair B to deposit the `amount`
+     */
+    function calculateQuote(uint amount) public view returns(uint amountA,uint amountB){
+        amountA = amount.mul(PERCENTAGE_A).div(uint(10**18));
+        amountB = amount.mul(PERCENTAGE_B).div(uint(10**18));
+    }
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
      *
