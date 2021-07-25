@@ -15,11 +15,11 @@ and the sky is the limit ;)
 
 <b>Instructions:<b/>
 
-- step1: git clone https://github.com/appswarehouse/SyntheticAssets
-- step2: npm i
-- step3: launch ganache
-- step4: truffle console
-- step5: migrate --reset
-- step6: test
+step1: git clone https://github.com/appswarehouse/SyntheticAssets
+step2: npm i
+step3: launch ganache
+step4: truffle console
+step5: migrate --reset
+step6: test
 
 most importantly have fun!
