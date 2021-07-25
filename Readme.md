@@ -12,3 +12,14 @@ There are other possible usage with some adjustment:
 - having a different percentage for both assets like 60% in BTC and 40% in ETH (e.g BTC60ETH). ./contracts/syntheticPercentage.sol
 
 and the sky is the limit ;)
+
+<strong>Instructions:<strong/>
+
+- step1: git clone https://github.com/appswarehouse/SyntheticAssets
+- step2: npm i
+- step3: launch ganache
+- step4: truffle console
+- step5: migrate --reset
+- step6: test
+
+most importantly have fun!
